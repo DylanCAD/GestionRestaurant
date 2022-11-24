@@ -42,7 +42,7 @@ class Commande
     public function __construct()
     {
         $this->menus = new ArrayCollection();
-        $this->client = new ArrayCollection();
+        
     }
 
     public function getId(): ?int

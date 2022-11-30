@@ -35,9 +35,6 @@ class Commande
      */
     private $client;
 
-  
-
-    
 
     public function __construct()
     {

@@ -50,12 +50,6 @@ class Client
     private $telCli;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Commande::class, inversedBy="client")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $commande;
-
-    /**
      * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="client")
      */
     private $commandes;
@@ -149,18 +143,6 @@ class Client
         return $this;
     }
 
-    public function getCommande(): ?Commande
-    {
-        return $this->commande;
-    }
-
-    public function setCommande(?Commande $commande): self
-    {
-        $this->commande = $commande;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Commande>
      */
@@ -190,4 +172,5 @@ class Client
 
         return $this;
     }
+
 }

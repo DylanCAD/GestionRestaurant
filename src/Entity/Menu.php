@@ -35,7 +35,7 @@ class Menu
     private $imageMenu;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
     private $descriptionMenu;
 
@@ -49,6 +49,7 @@ class Menu
      * @ORM\ManyToOne(targetEntity=Type::class, inversedBy="menu")
      */
     private $type;
+
 
     public function __construct()
     {
@@ -152,4 +153,5 @@ class Menu
 
         return $this;
     }
+
 }

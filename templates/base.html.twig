@@ -14,7 +14,7 @@
     </head>
     <body>
             <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-                <a class="navbar-brand" href=" {{path('acceuil')}} ">MON RESTAURANT</a>
+                <a class="navbar-brand" href=" {{path('acceuil')}} ">Enjoy Burger</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -24,13 +24,11 @@
             <div class="collapse navbar-collapse" id="navbarColor02">
                 <ul class="navbar-nav me-auto">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">NOTRE CARTE</a>
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">La Carte</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="">Burger</a>
-                    <a class="dropdown-item" href="">Hot-Dog</a>
-                    <a class="dropdown-item" href="">Salades</a>
-                    <a class="dropdown-item" href="">Quesadillas</a>
-                    <a class="dropdown-item" href="">Grillades</a>
+                    <a class="dropdown-item" href=" {{path('menus')}} ">Nos Produits</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Ajouter un menu</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -39,24 +37,9 @@
                     <a class="dropdown-item" href="">Categorie</a>
                 </div>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Administration</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="">Contact</a>
-                </div>
-            </li>
             </ul>
-        </div>
         </nav>
         <div class="container">
-        {# affiche tous les messages flash #}
-        {% for label, messages in app.flashes %}
-            <div class="alert alert-{{label}} mt-3">
-                {% for message in messages %}
-                    <p> {{message}} </p>
-                {% endfor %}
-            </div>
-        {% endfor %}
         {% block body %}{% endblock %}
         </div>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

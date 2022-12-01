@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\MenuRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -9,12 +10,13 @@ use Symfony\Component\Routing\Annotation\Route;
 class MenuController extends AbstractController
 {
     /**
-     * @Route("/menus", name="app_menu")
+     * @Route("/menus", name="menus", methods={"GET"})
      */
-    public function index(): Response
+    public function listeMenus(MenuRepository $repo)
     {
-        return $this->render('menu/index.html.twig', [
-            'controller_name' => 'MenuController',
+        $menus=$repo->findAll();
+        return $this->render('menu/listeMenus.html.twig', [
+            'lesMenus' => $menus
         ]);
     }
 }

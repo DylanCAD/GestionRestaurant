@@ -42,7 +42,7 @@ class AppFixtures extends Fixture
             $menu   ->setId(intval($value[0]))
                     ->setNomMenu($value[1])
                     ->setPrixMenu(intval($value[2]))
-                    ->setImageMenu('https://randomuser.me/api/portraits/'.".jpg")
+                    ->setImageMenu('')
                     ->setDescriptionMenu("<p>". join("</p><p>",$faker->paragraphs(1)) . "</p>")
                     ->setType($this->getReference("type".$value[3]));
             $manager->persist($menu);

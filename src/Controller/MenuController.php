@@ -2,10 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Menu;
 use App\Repository\MenuRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class MenuController extends AbstractController
 {
@@ -17,6 +18,16 @@ class MenuController extends AbstractController
         $menus=$repo->findAll();
         return $this->render('menu/listeMenus.html.twig', [
             'lesMenus' => $menus
+        ]);
+    }
+
+    /**
+     * @Route("/menu/{id}", name="ficheMenu", methods={"GET"})
+     */
+    public function ficheMenu(Menu $menu)
+    {
+        return $this->render('menu/ficheMenu.html.twig', [
+            'lesMenus' => $menu
         ]);
     }
 }

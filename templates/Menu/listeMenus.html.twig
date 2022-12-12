@@ -4,7 +4,6 @@
 
 {% block body %}
 <h1 class="text-center pt-2 ">Nos Produits</h1>
-<hr>
 <h4 class="text-center pt-2 ">Parcourez nos larges gammes de choix de menu : burgers, hot-dogs, salades, quesadillas, grillades.</h4>        
 <hr>
 <div class="row">
@@ -13,13 +12,13 @@
     <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
         
         <div class="card mb-3">
-        <h3 class="card-header"> {{leMenu.nomMenu}}</h3>
+        <h3 class="card-header"> <a href=" {{path('ficheMenu', {'id': leMenu.id })}} ">{{leMenu.nomMenu}}</a></h3>
         <img class="avatar mx-auto  d-block " style="height: auto; width: 200px; display: block;" src=" {{asset( leMenu.imageMenu) }} " alt="Card image">
         <div class="card-body">
             <p class="card-text"> {{leMenu.descriptionMenu|slice(0,200)|raw}}... </p>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item"> {% if leMenu.type %} Burger {% else %} Salade {% endif %}</li>
+            <li class="list-group-item"> {{leMenu.type.genretype}}</li>
             <li class="list-group-item"> {{leMenu.prixMenu}} €
         </ul>
         

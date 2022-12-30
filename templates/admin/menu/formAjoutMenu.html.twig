@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ajout menu{% endblock %}
+
+{% block body %}
+<h1 class="text-center pt-2 ">Ajout d'un menu</h1>
+
+{{form_start(formMenu)}}
+
+{{form_row(formMenu.nomMenu)}}
+{{form_row(formMenu.descriptionMenu)}}
+<div class="row">
+  <div class="col">{{form_row(formMenu.prixMenu)}}</div>
+  <div class="col">{{form_row(formMenu.type)}}</div>
+</div>
+
+{{form_row(formMenu.imageMenu)}}
+
+<div class="row">
+  <div class="col"><a href="{{path('admin_menus')}} " class="btn btn-warning btn-block">Annuler</a></div>
+  <div class="col"><input type="submit", class="btn btn-success btn-block" value="valider"></div>
+</div>
+
+{{form_end(formMenu)}}
+{% endblock %}

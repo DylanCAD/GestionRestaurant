@@ -11,11 +11,11 @@
 
     <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
         
-        <div class="card mb-3">
+        <div class="card mb-3 border-warning">
         <h3 class="card-header"> <a href=" {{path('ficheMenu', {'id': leMenu.id })}} ">{{leMenu.nomMenu}}</a></h3>
         <img class="avatar mx-auto  d-block " style="height: auto; width: 200px; display: block;" src=" {{asset( leMenu.imageMenu) }} " alt="Card image">
         <div class="card-body">
-            <p class="card-text"> {{leMenu.descriptionMenu|slice(0,200)|raw}}... </p>
+            <p class="card-text"> {{leMenu.descriptionMenu|slice(0,200)|raw}} </p>
         </div>
         <ul class="list-group list-group-flush">
             <li class="list-group-item"> {{leMenu.type.genretype}}</li>

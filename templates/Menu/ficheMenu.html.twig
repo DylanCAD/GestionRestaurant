@@ -1,53 +1,60 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% endblock %}
+{% block title %}Fiche menu{% endblock %}
 
 {% block body %}
 <h1 class="text-center pt-2 ">Composition du Menu</h1>      
 <hr>
-<div class="row pt-2">
-{% for leMenu in lesMenus %}
-    {% set tpMenus = leMenu.type|length %}
-    <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
-        
-        <div class="card mb-3">
+        <div class="card mb-3 border-warning">
         <h3 class="card-header"> {{leMenu.nomMenu}}</h3>
         <div class="row">
             <div class="col-3 d-flex align-items-center mx-auto">
                 <img class="avatar mx-auto  d-block " style="height: auto; width: 200px; display: block;" src=" {{asset( leMenu.imageMenu) }} " alt="Card image">
             </div>
-            <div class="col">        <div class="card-body">
-            <p class="card-text"> {{leMenu.descriptionMenu|raw}}... </p>
+            <div class="col">        
+            <div class="card-body">
+            <p class="card-text"> {{leMenu.descriptionMenu|raw}}</p>
+        </div>
+
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item"> {% if tpMenus == 1 %} Burger {% else %} Salade{% endif %}</li>
-            <li class="list-group-item"> {{leMenu.prixMenu}} €
+            <li class="list-group-item"> {{leMenu.type.genretype}}</li>
+            <li class="list-group-item"> {{leMenu.prixMenu}} €</li>
         </ul>
         </div>
     </div>
-    </div>
-</div>
-</div>
-<table class="table table-hover mx-auto">
+
+<table class="table mx-auto">
   <thead>
     <tr>
-      <th scope="col-3">Photo</th>
-      <th scope="col-4">Nom</th>
-      <th scope="col-1">Date</th>
-      <th scope="col-3">Styles</th>
-      <th scope="col-1">Morceaux</th>
+      <th scope="col-3">Choisissez votre boisson</th>
+      <th scope="col-3">Choisissez votre accompagnement</th>
+      <th scope="col-3">Choisissez votre sauce</th>
     </tr>
   </thead>
   <tbody>
-  {% for leMenu in leMenu.type %}
     <tr>
-      <td> <img class="miniature" src="{{leMenu.imageMenu}}" alt=""></td>
-      <td scope="row"> {{leMenu.nomMenu}} </td>
-      <td></td>
-      <td>{{leMenu.type|length}}</td>
+      <td> <img class="miniature" src={{asset("images/burgers/orange.jpg")}} alt=""> <p> Tropicana Orange </p>
+           <hr><img class="miniature" src={{asset("images/burgers/Pomme.jpg")}} alt=""> <p> Tropicana Pomme </p>
+           <hr><img class="miniature" src={{asset("images/burgers/pepSi.jpg")}} alt=""> <p> Pepsi </p>
+           <hr><img class="miniature" src={{asset("images/burgers/orAngina.jpg")}} alt=""> <p> Orangina </p>
+           <hr><img class="miniature" src={{asset("images/burgers/Lipton.jpg")}} alt=""> <p> Ice Tea Peche </p>
+           <hr><img class="miniature" src={{asset("images/burgers/oasiss.jpg")}} alt=""> <p> Oasis Tropical </p>
+           <hr><img class="miniature" src={{asset("images/burgers/7UP.png")}} alt=""> <p> 7 UP </p>
+           <hr><img class="miniature" src={{asset("images/burgers/vitteL.jpg")}} alt=""> <p> Vittel </p>
+      </td>
+      <td> <img class="miniature" src={{asset("images/burgers/Frite.jpg")}} alt=""> <p> Frite </p>
+           <hr><img class="miniature" src={{asset("images/burgers/Potatoes.jpg")}} alt=""> <p> Potatoes </p>
+           <hr><img class="miniature" src={{asset("images/burgers/CobettE.png")}} alt=""> <p> Cobette </p>
+           <hr><img class="miniature" src={{asset("images/burgers/Salade.jpg")}} alt=""> <p> Salade </p>
+      </td>
+      <td> <img class="miniature" src={{asset("images/burgers/creamy.jpg")}} alt=""> <p> Sauce Creamy Deluxe </p>
+           <hr><img class="miniature" src={{asset("images/burgers/Ketchup.jpg")}} alt=""> <p> Ketchup </p>
+           <hr><img class="miniature" src={{asset("images/burgers/mayonnaise.png")}} alt=""> <p> Mayonnaise </p>
+           <hr><img class="miniature" src={{asset("images/burgers/SansSauce.jpg")}} alt=""> <p> Sans Sauce </p>
+      </td>
     </tr> 
-  {% endfor %}
   </tbody>
 </table>
-{% endfor %}
+
 {% endblock %}

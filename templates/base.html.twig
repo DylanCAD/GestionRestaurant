@@ -44,6 +44,14 @@
             </ul>
         </nav>
         <div class="container">
+        {# affiche tous les messages flash #}
+        {% for label, messages in app.flashes %}
+            <div class="alert alert-{{label}} mt-3">
+            {% for message in messages %}
+                <p> {{message}} </p>
+            {% endfor %}
+            </div>
+        {% endfor %}
         {% block body %}{% endblock %}
         </div>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

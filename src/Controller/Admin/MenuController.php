@@ -36,6 +36,7 @@ class MenuController extends AbstractController
         {
             $manager->persist($menu);
             $manager->flush();
+            $this->addFlash("success","Le menu a bien été ajouté");
             return $this->redirectToRoute('admin_menus');
         }
         return $this->render('admin/menu/formAjoutMenu.html.twig', [

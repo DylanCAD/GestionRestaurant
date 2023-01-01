@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Menu;
 use Symfony\Component\Form\AbstractType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -35,7 +36,8 @@ class MenuType extends AbstractType
                     "placeholder"=>"Saisir l'image du menu"
                 ]
             ])
-            ->add('descriptionMenu', TextareaType::class,[
+            ->add('descriptionMenu', CKEditorType::class,[
+                'config_name'=>'config_complete',
                 'label'=> "Description du menu",
                 'attr'=>[
                     "placeholder"=>"Saisir la description du menu"

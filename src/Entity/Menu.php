@@ -5,10 +5,16 @@ namespace App\Entity;
 use App\Repository\MenuRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=MenuRepository::class)
+ * @UniqueEntity(
+ *      fields={"nomMenu"},
+ *      message="Le nom du menu est déja utilisé."
+ * )
  */
 class Menu
 {
@@ -21,6 +27,7 @@ class Menu
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Le nom est obligatoire")
      */
     private $nomMenu;
 

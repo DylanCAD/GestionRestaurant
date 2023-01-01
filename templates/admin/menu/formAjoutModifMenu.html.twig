@@ -11,7 +11,7 @@
 {% endif %}
 d'un menu</h1>
 
-{{form_start(formMenu)}}
+{{form_start(formMenu,{'attr':{'novalidate':'novalidate'}})}}
 
 {{form_row(formMenu.nomMenu)}}
 {{form_row(formMenu.descriptionMenu)}}

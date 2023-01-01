@@ -26,21 +26,39 @@ class MenuController extends AbstractController
 
     /**
      * @Route("/admin/menu/ajout", name="admin_menu_ajout", methods={"GET","POST"})
+     * @Route("/admin/menu/modif/{id}", name="admin_menu_modif", methods={"GET","POST"})
      */
-    public function ajoutMenu( Request $request, EntityManagerInterface $manager)
+    public function ajoutModifMenu(Menu $menu=null, Request $request, EntityManagerInterface $manager)
     {
-        $menu=new Menu();
+        if($menu == null){
+            $menu=new Menu();
+            $mode="ajouté";
+        }else{
+            $mode="modifié";
+        }
         $form=$this->createForm(MenuType::class, $menu);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid() )
         {
             $manager->persist($menu);
             $manager->flush();
-            $this->addFlash("success","Le menu a bien été ajouté");
+            $this->addFlash("success","Le menu a bien été $mode");
             return $this->redirectToRoute('admin_menus');
         }
-        return $this->render('admin/menu/formAjoutMenu.html.twig', [
+        return $this->render('admin/menu/formAjoutModifMenu.html.twig', [
             'formMenu' => $form->createView()
+            
         ]);
+    }
+
+    /**
+     * @Route("/admin/menu/suppression/{id}", name="admin_menu_suppression", methods={"GET"})
+     */
+    public function suppressionMenu(Menu $menu, EntityManagerInterface $manager)
+    {
+        $manager->remove($menu);
+        $manager->flush();
+        $this->addFlash("success","Le menu a bien été supprimé");
+        return $this->redirectToRoute('admin_menus');
     }
 }

@@ -3,7 +3,13 @@
 {% block title %}ajout menu{% endblock %}
 
 {% block body %}
-<h1 class="text-center pt-2 ">Ajout d'un menu</h1>
+<h1 class="text-center pt-2 ">
+{% if (app.request.attributes.get('_route')=="admin_menu_ajout") %}
+  Ajout
+{% else %}
+  Modification
+{% endif %}
+d'un menu</h1>
 
 {{form_start(formMenu)}}
 
@@ -18,7 +24,12 @@
 
 <div class="row">
   <div class="col"><a href="{{path('admin_menus')}} " class="btn btn-warning btn-block">Annuler</a></div>
-  <div class="col"><input type="submit", class="btn btn-success btn-block" value="valider"></div>
+  <div class="col"><input type="submit", class="btn btn-success btn-block" value=
+  {% if (app.request.attributes.get('_route')=="admin_menu_ajout") %}
+  "Ajouter le menu"
+  {% else %}
+  "Modifier le menu"
+  {% endif %}></div>
 </div>
 
 {{form_end(formMenu)}}

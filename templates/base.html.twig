@@ -18,31 +18,45 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
-                <section href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_y83wrye30AiyARhKVRTIMBzwP6pOSrgon0PUTXkKfg&s">
             
             <div class="collapse navbar-collapse" id="navbarColor02">
-                <ul class="navbar-nav me-auto">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">La Carte</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href=" {{path('menus')}} ">Nos Produits</a>
-                </div>
+                <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href=" {{path('menus')}} ">La carte</a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Gestion des albums</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="">Categorie</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
+            {% if app.user and is_granted('ROLE_ADMIN') %}
+            <li class="nav-item">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Administration</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href=" {{path('admin_menus')}} ">Gestion des menus</a>
                 </div>
             </li>
+            {% endif %}
+
             </ul>
-        </nav>
+            <ul class="navbar-nav my-auto">
+            {% if app.user %}
+            <li class="nav-item">
+                    <img class="avatar supermini" src=" {{ app.user.avatar}} " alt="photo de {{app.user.fullName}} ">
+                </li>
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{app.user.fullName}}</a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="#">Mon profil</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href=" {{path('app_logout')}} ">Se déconnecter</a>
+                </div>
+            </li>
+            {% else %}
+            <li class="nav-item">
+            <a href=" {{path('app_login')}} " class="nav-link">Se connecter</a>
+            </li>
+            <li class="nav-item">
+            <a href=" {{path('app_register')}} " class="nav-link">S'inscrire</a>
+            </li>    
+            {% endif %}
+            </ul>
+            </nav>
         <div class="container">
         {# affiche tous les messages flash #}
         {% for label, messages in app.flashes %}

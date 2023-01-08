@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ajout boisson{% endblock %}
+
+{% block body %}
+<h1 class="text-center pt-2 ">
+{% if (app.request.attributes.get('_route')=="admin_boisson_ajout") %}
+  Ajout
+{% else %}
+  Modification
+{% endif %}
+d'une boisson</h1>
+
+{{form_start(formBoisson,{'attr':{'novalidate':'novalidate'}})}}
+
+{{form_row(formBoisson.nom)}}
+<div class="row">
+  <div class="col">{{form_row(formBoisson.prix)}}</div>
+</div>
+
+{{form_row(formBoisson.image)}}
+
+<div class="row">
+  <div class="col"><a href="{{path('admin_boissons')}} " class="btn btn-warning btn-block">Annuler</a></div>
+  <div class="col"><input type="submit", class="btn btn-success btn-block" value=
+  {% if (app.request.attributes.get('_route')=="admin_boisson_ajout") %}
+  "Ajouter la boisson"
+  {% else %}
+  "Modifier la boisson"
+  {% endif %}></div>
+</div>
+
+{{form_end(formBoisson)}}
+{% endblock %}

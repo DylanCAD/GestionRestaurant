@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}gestion boissons{% endblock %}
+
+{% block body %}
+<h1 class="text-center pt-2 ">Gestion des boissons</h1>
+<a href=" {{path('admin_boisson_ajout')}} " class="btn btn-success">Ajouter une boisson</a>
+<hr>        
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col-1"></th>
+      <th scope="col-2">Nom</th>
+      <th scope="col-7">Prix</th>
+      <th scope="col-2">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+        {% for laBoisson in lesBoissons %}
+            <tr>
+            <td scope="col-1"><img class="avatar mx-auto  d-block " style="height: auto; width: 60px; display: block;" src=" {{asset( laBoisson.image) }} " alt="Card image"></td>
+            <td scope="col-2">{{laBoisson.nom}}</td>
+            <td scope="col-7">
+            <p class="d-flex flex-row">
+                <span class="align-self-center mx-3"> {{laBoisson.prix}} €</span>
+            </p>
+            </td>
+            <td class="col-2">
+            <a href=" {{path('admin_boisson_modif', {'id': laBoisson.id })}} " class="btn btn-primary"><i class="fas fa-pen"></i></a>
+            <a class="btn btn-danger" 
+            data-toggle="modal" 
+            data-target="#modalSimple"
+            data-titre="Suppression d'une boisson"
+            data-message="Etes vous sur de vouloir supprimer la boisson : {{ laBoisson.nom }}"
+            data-libelleBouton = "Supprimer la boisson"
+            data-lien= " {{ path('admin_boisson_suppression', {'id': laBoisson.id}) }}"
+            ><i class="far fa-trash-alt"></i></a>
+            </td>
+            </tr>
+        {% endfor %}
+</tbody>
+</table>
+{% endblock %}
+{% block javascripts %}
+  {% include "include/_modale.html.twig" %}
+{% endblock %}

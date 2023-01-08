@@ -4,9 +4,10 @@ namespace App\DataFixtures;
 
 
 use Faker\Factory;
-use App\Entity\Client;
 use App\Entity\Menu;
 use App\Entity\Type;
+use App\Entity\Client;
+use App\Entity\Boisson;
 use App\Entity\Commande;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -36,6 +37,7 @@ class AppFixtures extends Fixture
             $lesMenus[]=fgetcsv($fichierMenuCsv);
         }
         fclose($fichierMenuCsv);
+        
         
         foreach ($lesMenus as $value) {
             $menu=new Menu();
@@ -79,6 +81,21 @@ class AppFixtures extends Fixture
                         ->setDateCom(new \DateTime($value[1]))
                         ->setClient($this->getReference("client".$value[2]));
             $manager->persist($commande);
+        }
+
+        $fichierBoissonCsv=fopen(__DIR__."/boisson.csv","r");
+        while (!feof($fichierBoissonCsv)) {
+            $lesBoissons[]=fgetcsv($fichierBoissonCsv);
+        }
+        fclose($fichierBoissonCsv);
+        
+        foreach ($lesBoissons as $value) {
+            $boisson=new Boisson();
+            $boisson   ->setId(intval($value[0]))
+                        ->setNom($value[1])
+                        ->setImage('')
+                        ->setPrix(intval($value[2]));
+            $manager->persist($boisson);
         }
 
         $manager->flush();

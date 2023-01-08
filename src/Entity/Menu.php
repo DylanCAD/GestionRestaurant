@@ -2,12 +2,12 @@
 
 namespace App\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 use App\Repository\MenuRepository;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=MenuRepository::class)
@@ -57,11 +57,17 @@ class Menu
      */
     private $type;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Boisson::class, mappedBy="menus")
+     */
+    private $boissons;
+
 
     public function __construct()
     {
         $this->types = new ArrayCollection();
         $this->Commande = new ArrayCollection();
+        $this->boissons = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -157,6 +163,33 @@ class Menu
     public function setType(?Type $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Boisson>
+     */
+    public function getBoissons(): Collection
+    {
+        return $this->boissons;
+    }
+
+    public function addBoisson(Boisson $boisson): self
+    {
+        if (!$this->boissons->contains($boisson)) {
+            $this->boissons[] = $boisson;
+            $boisson->addMenu($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBoisson(Boisson $boisson): self
+    {
+        if ($this->boissons->removeElement($boisson)) {
+            $boisson->removeMenu($this);
+        }
 
         return $this;
     }

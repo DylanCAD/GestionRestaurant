@@ -44,7 +44,7 @@ class UserFixtures extends Fixture
         }
         $admin=new User();
         $admin  ->setNom("admin")
-                ->setPrenom("Dylan")
+                ->setPrenom("DKA")
                 ->setEmail("admin@gmail.com")
                 ->setSexe(0)
                 ->setIsVerified(true)

@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ajout sauce{% endblock %}
+
+{% block body %}
+<h1 class="text-center pt-2 ">
+{% if (app.request.attributes.get('_route')=="admin_sauce_ajout") %}
+  Ajout
+{% else %}
+  Modification
+{% endif %}
+d'une sauce</h1>
+
+{{form_start(formSauce,{'attr':{'novalidate':'novalidate'}})}}
+
+{{form_row(formSauce.nomSauce)}}
+<div class="row">
+  <div class="col">{{form_row(formSauce.prixSauce)}}</div>
+</div>
+
+{{form_row(formSauce.imageSauce)}}
+
+<div class="row">
+  <div class="col"><a href="{{path('admin_sauces')}} " class="btn btn-warning btn-block">Annuler</a></div>
+  <div class="col"><input type="submit", class="btn btn-success btn-block" value=
+  {% if (app.request.attributes.get('_route')=="admin_sauce_ajout") %}
+  "Ajouter la sauce"
+  {% else %}
+  "Modifier la sauce"
+  {% endif %}></div>
+</div>
+
+{{form_end(formSauce)}}
+{% endblock %}

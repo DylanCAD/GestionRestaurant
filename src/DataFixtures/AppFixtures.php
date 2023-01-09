@@ -2,13 +2,14 @@
 
 namespace App\DataFixtures;
 
-
+use App\Entity\Accompagnement;
 use Faker\Factory;
 use App\Entity\Menu;
 use App\Entity\Type;
 use App\Entity\Client;
 use App\Entity\Boisson;
 use App\Entity\Commande;
+use App\Entity\Sauce;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
@@ -96,6 +97,36 @@ class AppFixtures extends Fixture
                         ->setImage('')
                         ->setPrix(intval($value[2]));
             $manager->persist($boisson);
+        }
+
+        $fichierAccompagnementCsv=fopen(__DIR__."/accompagnement.csv","r");
+        while (!feof($fichierAccompagnementCsv)) {
+            $lesAccompagnements[]=fgetcsv($fichierAccompagnementCsv);
+        }
+        fclose($fichierAccompagnementCsv);
+        
+        foreach ($lesAccompagnements as $value) {
+            $accompagnement=new Accompagnement();
+            $accompagnement ->setId(intval($value[0]))
+                            ->setNomAccompagnement($value[1])
+                            ->setImageAccompagnement('')
+                            ->setPrixAccompagnement(intval($value[2]));
+            $manager->persist($accompagnement);
+        }
+
+        $fichierSauceCsv=fopen(__DIR__."/sauce.csv","r");
+        while (!feof($fichierSauceCsv)) {
+            $lesSauces[]=fgetcsv($fichierSauceCsv);
+        }
+        fclose($fichierSauceCsv);
+        
+        foreach ($lesSauces as $value) {
+            $sauce=new Sauce();
+            $sauce ->setId(intval($value[0]))
+                            ->setNomSauce($value[1])
+                            ->setImageSauce('')
+                            ->setPrixSauce(intval($value[2]));
+            $manager->persist($sauce);
         }
 
         $manager->flush();

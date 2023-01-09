@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}gestion accompagnements{% endblock %}
+
+{% block body %}
+<h1 class="text-center pt-2 ">Gestion des accompagnements</h1>
+<a href=" {{path('admin_accompagnement_ajout')}} " class="btn btn-success">Ajouter un accompagnement</a>
+<hr>        
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col-1"></th>
+      <th scope="col-2">Nom</th>
+      <th scope="col-7">Prix</th>
+      <th scope="col-2">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+        {% for leAccompagnement in lesAccompagnements %}
+            <tr>
+            <td scope="col-1"><img class="avatar mx-auto  d-block " style="height: auto; width: 60px; display: block;" src=" {{asset( leAccompagnement.imageAccompagnement) }} " alt="Card image"></td>
+            <td scope="col-2">{{leAccompagnement.nomAccompagnement}}</td>
+            <td scope="col-7">
+            <p class="d-flex flex-row">
+                <span class="align-self-center mx-3"> {{leAccompagnement.prixAccompagnement}} €</span>
+            </p>
+            </td>
+            <td class="col-2">
+            <a href=" {{path('admin_accompagnement_modif', {'id': leAccompagnement.id })}} " class="btn btn-primary"><i class="fas fa-pen"></i></a>
+            <a class="btn btn-danger" 
+            data-toggle="modal" 
+            data-target="#modalSimple"
+            data-titre="Suppression de l' accompagnement"
+            data-message="Etes vous sur de vouloir supprimer l' accompagnement : {{ leAccompagnement.nomAccompagnement }}"
+            data-libelleBouton = "Supprimer l' accompagnement"
+            data-lien= " {{ path('admin_accompagnement_suppression', {'id': leAccompagnement.id}) }}"
+            ><i class="far fa-trash-alt"></i></a>
+            </td>
+            </tr>
+        {% endfor %}
+</tbody>
+</table>
+{% endblock %}
+{% block javascripts %}
+  {% include "include/_modale.html.twig" %}
+{% endblock %}

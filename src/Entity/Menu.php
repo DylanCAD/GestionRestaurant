@@ -62,12 +62,23 @@ class Menu
      */
     private $boissons;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Accompagnement::class, mappedBy="menus")
+     */
+    private $accompagnements;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Sauce::class, mappedBy="menus")
+     */
+    private $sauces;
+
 
     public function __construct()
     {
-        $this->types = new ArrayCollection();
         $this->Commande = new ArrayCollection();
         $this->boissons = new ArrayCollection();
+        $this->accompagnements = new ArrayCollection();
+        $this->sauces = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -189,6 +200,60 @@ class Menu
     {
         if ($this->boissons->removeElement($boisson)) {
             $boisson->removeMenu($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Accompagnement>
+     */
+    public function getAccompagnements(): Collection
+    {
+        return $this->accompagnements;
+    }
+
+    public function addAccompagnement(Accompagnement $accompagnement): self
+    {
+        if (!$this->accompagnements->contains($accompagnement)) {
+            $this->accompagnements[] = $accompagnement;
+            $accompagnement->addMenu($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAccompagnement(Accompagnement $accompagnement): self
+    {
+        if ($this->accompagnements->removeElement($accompagnement)) {
+            $accompagnement->removeMenu($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Sauce>
+     */
+    public function getSauces(): Collection
+    {
+        return $this->sauces;
+    }
+
+    public function addSauce(Sauce $sauce): self
+    {
+        if (!$this->sauces->contains($sauce)) {
+            $this->sauces[] = $sauce;
+            $sauce->addMenu($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSauce(Sauce $sauce): self
+    {
+        if ($this->sauces->removeElement($sauce)) {
+            $sauce->removeMenu($this);
         }
 
         return $this;

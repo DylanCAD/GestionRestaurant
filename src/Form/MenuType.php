@@ -3,9 +3,11 @@
 namespace App\Form;
 
 use App\Entity\Menu;
+use App\Entity\Type;
 use Symfony\Component\Form\AbstractType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -43,15 +45,10 @@ class MenuType extends AbstractType
                     "placeholder"=>"Saisir la description du menu"
                 ]
             ])
-            ->add('type', ChoiceType::class, [ 
+            ->add('type', EntityType::class, [ 
                 'label'=> "Type du menu",
-                "choices"=>[
-                    "Burger"=>1,
-                    "Hot-Dog"=>2,
-                    "Salade"=>3,
-                    "Grillade"=>4,
-                    "Quesadillas"=>5
-                ]
+                'class' => Type::class,
+                'choice_label' => 'genretype'
             ])
             //->add('valider', SubmitType::class)
         ;

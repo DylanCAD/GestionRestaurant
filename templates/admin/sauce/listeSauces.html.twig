@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}gestion sauces{% endblock %}
+
+{% block body %}
+<h1 class="text-center pt-2 ">Gestion des sauces</h1>
+<a href=" {{path('admin_sauce_ajout')}} " class="btn btn-success">Ajouter une sauce</a>
+<hr>        
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col-1"></th>
+      <th scope="col-2">Nom</th>
+      <th scope="col-7">Prix</th>
+      <th scope="col-2">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+        {% for laSauce in lesSauces %}
+            <tr>
+            <td scope="col-1"><img class="avatar mx-auto  d-block " style="height: auto; width: 60px; display: block;" src=" {{asset( laSauce.imageSauce) }} " alt="Card image"></td>
+            <td scope="col-2">{{laSauce.nomSauce}}</td>
+            <td scope="col-7">
+            <p class="d-flex flex-row">
+                <span class="align-self-center mx-3"> {{laSauce.prixSauce}} €</span>
+            </p>
+            </td>
+            <td class="col-2">
+            <a href=" {{path('admin_sauce_modif', {'id': laSauce.id })}} " class="btn btn-primary"><i class="fas fa-pen"></i></a>
+            <a class="btn btn-danger" 
+            data-toggle="modal" 
+            data-target="#modalSimple"
+            data-titre="Suppression de la sauce"
+            data-message="Etes vous sur de vouloir supprimer la sauce : {{ laSauce.nomSauce }}"
+            data-libelleBouton = "Supprimer la sauce"
+            data-lien= " {{ path('admin_sauce_suppression', {'id': laSauce.id}) }}"
+            ><i class="far fa-trash-alt"></i></a>
+            </td>
+            </tr>
+        {% endfor %}
+</tbody>
+</table>
+{% endblock %}
+{% block javascripts %}
+  {% include "include/_modale.html.twig" %}
+{% endblock %}

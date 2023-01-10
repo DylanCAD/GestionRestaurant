@@ -3,15 +3,109 @@
 {% block title %}Hello AcceuilController!{% endblock %}
 
 {% block body %}
-<div class="jumbotron">
-  <h1 class="display-">Vous êtes bien chez Enjoy Burger !</h1>
 
-  <p class="lead">  <img src={{asset("images/burgers/logo.jpg")}} width="50%">   Mon Restaurant, c’ est des recettes qui t’ en mettront plein la vue, toujours à base de steak haché frais de race française, des sauces maison, d’un pain artisanal et de légumes livrés tous les jours par notre maraicher</p>
+
+<div class="jumbotron">
+  <center><h1 class="display-">Vous êtes bien chez Bumguer !</h1></center>
+<h4>Bumguer, c’ est des recettes qui t’ en mettront plein la vue, toujours à base de steak haché frais de race française, des sauces maison, d’un pain artisanal et des légumes livrés tous les jours par notre maraicher.</h4>
   <hr class="my-4">
-  <p>Créé en 2022, Mon Restaurant a immédiatement fait parler de lui de par son univers, accompagné d’une offre alléchante. Nous avons longtemps travaillé sur ce projet pour en faire une enseigne aboutie et impactante.</p>
-  <p class="lead">
-    <a class="btn btn-primary btn-lg" href="#" role="button">Accéder à la carte du restaurant </a>
-  </p>
-  <img src={{asset("images/burgers/pat.gif")}} width="50%">
+  <h5>Créé en 2022, Bemguer a immédiatement fait parler de lui de par son univers, accompagné d’une offre alléchante. Nous avons longtemps travaillé sur ce projet pour en faire une enseigne aboutie et impactante.</h5>
+  <center><img src={{asset("images/burgers/pat.gif")}} width="20%"></center>
+  <hr class="my-4">
+  <h4>Pour la planète,</h4>
+  <h5>Il y a du changement au menu, notre créateur, le Colonel DKA, voulait que nous soyons exemplaires. Cela vaut encore aujourd’hui ! C’est pourquoi nous mettons tout en œuvre pour que le développement de notre entreprise se fasse de manière durable et minimise notre empreinte environnementale. De nos chaînes d’approvisionnement à nos restaurants.</h5>
+
 </div>
+
+
+
+
+
+
+
+
+<style>
+.right {
+  text-align: right;
+}
+</style>
+
+<div class="right">
+    <a class="btn btn-primary btn-lg" href="{{path('menus')}}" role="button">Accéder à la carte du restaurant </a>
+</div>
+
+
+
+<center>
+<style>
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.popup .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+
+</style>
+
+<div class="popup" onclick="myFunction()">Voir le nouveau menu !
+  <span class="popuptext" id="myPopup">
+    <img src="CrispyChicken.png" alt="image" height="100" width="100">
+    <br>
+    <p>Le Crispy Chicken est chez Bumguer !</p>
+    <br>
+    <a class="btn btn-primary btn-lg" href="http://127.0.0.1:8000/menu/52" role="button">Decouvrez-le</a>
+
+  </span>
+</div>
+
+<script>
+function myFunction() {
+  var popup = document.getElementById("myPopup");
+  popup.classList.toggle("show");
+}
+</script>
+</center>
+
+
 {% endblock %}

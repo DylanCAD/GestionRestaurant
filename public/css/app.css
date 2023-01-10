@@ -8,6 +8,396 @@
 }
 
 .supermini{
+  
     max-width: 40px;
     height: auto;
 }
+
+.avatar{
+    border-radius: 50%;
+}
+
+.miniature{
+    max-width: 80px;
+    height: auto;
+}
+
+.supermini{
+    max-width: 40px;
+    height: auto;
+}
+
+#styleTexte {
+    /* font-family: Impact, Haettenschweiler, 'Serif Bold Italic', sans-serif; */
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+ }
+
+ .div3Sec1 {
+
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  margin-bottom: 16px; 
+ }
+
+ .Point {
+   padding: 8px;
+ }
+
+ .Marge {
+  padding: 0px;
+  font-variant: inherit;
+  font-stretch: inherit;
+  font-family: inherit;
+  text-align: inherit;
+  color: initial;
+  margin: 0px;
+  font-size: 2.4em;
+  line-height: 1em;
+  font-weight: 600;
+  text-decoration: none;
+  font-style: inherit;
+ }
+
+ #texte1 {
+  color: rgb(255, 255, 255);
+  text-shadow: rgb(29, 31, 29) 0.2px 0.2px 0.2px;
+ }
+
+ #navbar {
+   color: azure;
+ }
+
+ #couleurFond {
+    background-color:rgb(221, 203, 194)
+ }
+
+ #ImageSite {
+
+  height: 350px;
+  background-color: #090909;
+  background-image: url(../image/FondRestau.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  box-shadow: 0 0 0.5em rgba(26, 27, 26, 0.3);
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+ }
+
+ .ulForm {
+
+  display: flex;
+  flex-flow: row wrap;
+  
+ }
+
+ .liForm {
+
+  list-style: none;
+  white-space: nowrap;
+  color: rgb(239, 68, 35);
+ }
+ 
+ .SpanLi {
+
+  padding: 0px;
+  font-variant: inherit;
+  font-stretch: inherit;
+  font-family: inherit;
+  text-align: inherit;
+  color: rgb(239, 68, 35);
+  margin: 0px;
+  font-size: 0.95em;
+  line-height: 1em;
+  font-weight: 400;
+  text-decoration: none;
+  text-shadow: rgb(5, 5, 5) 0.2px 0.2px 0.2px;
+  font-style: inherit;
+ }
+ 
+ .liForm:not(:last-child)::after {
+  content: "•";
+  margin-left: 8px;
+ }
+
+ .Header {
+
+  width: 100%;
+  /* background-color: rgb(239, 68, 35); */
+  position: relative;
+  overflow: hidden;
+ }
+
+ .Header::before {
+
+  content: " ";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background: url(https://th.bing.com/th/id/R.5edc106c3f3faa1138f52e5c61b901d7?rik=RErSskNWeJwQlQ&riu=http%3a%2f%2fmarchesoni.com.br%2fwp-content%2fuploads%2frevslider%2fslider-linha-chapas%2fbackground-categoria-chapas.jpg&ehk=ChkSFlc601W5BZqkW8BmW0pD%2f8AH4CHk52mYDHAgl2g%3d&risl=&pid=ImgRaw&r=0) center center / cover;
+  opacity: 2;
+  transform: scale(1.03);
+ }
+
+ .Header::after {
+
+  content: " ";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background: linear-gradient(transparent 10%, rgba(14, 15, 14, 0.867) 90%);
+  opacity: 1;
+  transition: all 0.3s ease 0s
+ }
+
+ .Section1 {
+
+  box-sizing: border-box;
+  padding: 0px 16px;
+  width: 100%;
+  max-width: 1300px;
+  margin: auto;
+  position: relative;
+  z-index: 2;
+ }
+
+ .div1Sec1 {
+
+  height: 230px;
+  margin: auto;
+  position: relative;
+  bottom: 20px;
+  display: flex;
+  align-items: flex-end;
+  z-index: 10;
+ }
+
+ .div2Sec1 {
+
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+ }
+
+ .liSpan {
+
+  list-style: none;
+  white-space: nowrap;
+  color: rgb(239, 68, 35);
+ }
+
+ .ColorTexte {
+
+  color: rgb(255, 48, 2);
+  text-decoration: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.BorderDiv {
+
+  width: 100%;
+  height: 40px;
+  background-color: rgb(255, 255, 255);
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  position: relative;
+  z-index: 10;
+}
+
+.DivBloc1 {
+
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  background-color: rgb(255, 255, 255);
+  margin-top: 0px;
+}
+
+.SecBloc1 {
+
+  box-sizing: border-box;
+  padding: 0px 16px;
+  width: 100%;
+  max-width: 1300px;
+  margin: auto;
+  position: relative;
+  z-index: 2;
+}
+
+.SecBloc1.gutterBottom {
+
+  padding-bottom: 60px;
+}
+
+.h2Bloc1 {
+
+  padding: 0px; 
+  font-variant: inherit;
+  font-stretch: inherit;
+  font-family: inherit;
+  text-align: inherit;
+  color: initial;
+  margin: 0px;
+  font-size: 1em;
+  line-height: 1em;
+  font-weight: 400;
+  text-decoration: none;
+  font-style: inherit;
+}
+
+.SpanH2Bloc1 {
+
+  color: rgb(86, 228, 126);
+  font-weight: bold;
+}
+
+.Span2H2Bloc1 {
+
+  color: rgb(255, 255, 255);
+  font-family: SFUIDisplay, Arial, "Liberation Sans", FreeSans, sans-serif;
+}
+
+.ColorSpan {
+
+  color: rgb(239, 68, 35);
+}
+
+.initial1 {
+
+  color: rgb(86, 228, 126);
+}
+
+.DivPage {
+
+  display: flex;
+  flex-direction: row;
+}
+
+.Div2Page {
+
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0%;
+}
+
+.div3Page {
+
+  position: relative;
+  max-width: calc(650px);
+  border-radius: 25px;
+}
+
+.Div4PageSlide {
+
+/* position: relative;
+display: block; */
+box-sizing: border-box;
+-webkit-user-select: none;
+user-select: none;
+-webkit-touch-callout: none;
+-khtml-user-select: none;
+touch-action: pan-y;
+-webkit-tap-highlight-color: transparent;
+}
+
+.Div4FlecheGauche {
+
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+}
+
+.Div4FlecheDroite {
+
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+}
+
+.DivButton {
+
+box-sizing: border-box;
+margin: 0px;
+font: inherit;
+text-decoration: none;
+cursor: pointer;
+border: none;
+outline: 0px;
+white-space: nowrap;
+border-radius: 100%;
+transition: all 0.2s ease-in-out 0s;
+display: flex;
+width: 55px;
+ height: 55px;
+}
+
+.DivButton.outLined {
+
+  background: transparent;
+  border: 1px solid rgb(232, 232, 232);
+}
+
+.Style {
+
+width: 5850px;
+opacity: 1;
+transform: translate3d(-650px, 0px, 0px);
+}
+
+.Div5PageList {
+
+overflow: hidden;
+margin: 0;
+padding: 0;
+}
+
+element.Style {
+
+width: 5850px;
+opacity: 1;
+transform: translate3d(-650px, 0px, 0px); 
+width: 650px;
+}
+
+.Div6PageTrack {
+
+position: relative;
+top: 0;
+left: 0;
+display: block;
+margin-left: auto;
+margin-right: auto;
+}
+
+.Div6PageTrack::before {
+
+display: table;
+content: "";
+}
+
+.Div8Page {
+
+position: relative;
+max-width: calc(650px);
+border-radius: 25px;
+}
+
+.Image1{
+
+  height: 405px;
+  border-radius: 25px;
+  display: flex;
+  object-fit: cover;
+  position: relative;
+  overflow: hidden;
+  object-position: center center;
+  width: auto;
+} 

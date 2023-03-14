@@ -35,7 +35,7 @@ class Boisson
     private $prix;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Menu::class, inversedBy="boissons")
+     * @ORM\OneToMany(targetEntity=Menu::class, mappedBy="boissons")
      */
     private $menus;
 
@@ -43,6 +43,8 @@ class Boisson
     {
         $this->menus = new ArrayCollection();
     }
+
+
 
     public function getId(): ?int
     {
@@ -95,24 +97,31 @@ class Boisson
     /**
      * @return Collection<int, Menu>
      */
-    public function getMenus(): Collection
+    public function getMenu(): Collection
     {
         return $this->menus;
     }
 
-    public function addMenu(Menu $menu): self
+    public function addMenu(Menu $menus): self
     {
-        if (!$this->menus->contains($menu)) {
-            $this->menus[] = $menu;
+        if (!$this->menus->contains($menus)) {
+            $this->menus[] = $menus;
+            $menus->setBoissons($this);
         }
 
         return $this;
     }
 
-    public function removeMenu(Menu $menu): self
+    public function removeMenu(Menu $menus): self
     {
-        $this->menus->removeElement($menu);
+        if ($this->menus->removeElement($menus)) {
+            // set the owning side to null (unless already changed)
+            if ($menus->getBoissons() === $this) {
+                $menus->setBoissons(null);
+            }
+        }
 
         return $this;
     }
+
 }

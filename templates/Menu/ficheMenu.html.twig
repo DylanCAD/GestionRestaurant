@@ -34,26 +34,22 @@
   </thead>
   <tbody>
     <tr>
-      <td> <img class="miniature" src={{asset("orange.jpg")}} alt=""> <p> Tropicana Orange </p> 
-           <hr><img class="miniature" src={{asset("Pomme.jpg")}} alt=""> <p> Tropicana Pomme </p>
-           <hr><img class="miniature" src={{asset("pepSi.jpg")}} alt=""> <p> Pepsi </p>
-           <hr><img class="miniature" src={{asset("orAngina.jpg")}} alt=""> <p> Orangina </p>
-           <hr><img class="miniature" src={{asset("Lipton.jpg")}} alt=""> <p> Ice Tea Peche </p>
-           <hr><img class="miniature" src={{asset("oasiss.jpg")}} alt=""> <p> Oasis Tropical </p>
-           <hr><img class="miniature" src={{asset("7UP.png")}} alt=""> <p> 7 UP </p>
-           <hr><img class="miniature" src={{asset("vitteL.jpg")}} alt=""> <p> Vittel </p>
-      </td>
-      <td> <img class="miniature" src={{asset("Frite.jpg")}} alt=""> <p> Frite </p>
-           <hr><img class="miniature" src={{asset("Potatoes.jpg")}} alt=""> <p> Potatoes </p>
-           <hr><img class="miniature" src={{asset("CobettE.png")}} alt=""> <p> Cobette </p>
-           <hr><img class="miniature" src={{asset("Salade.jpg")}} alt=""> <p> Salade </p>
-      </td>
-      <td> <img class="miniature" src={{asset("creamy.jpg")}} alt=""> <p> Sauce Creamy Deluxe </p>
-           <hr><img class="miniature" src={{asset("Ketchup.jpg")}} alt=""> <p> Ketchup </p>
-           <hr><img class="miniature" src={{asset("mayonnaise.png")}} alt=""> <p> Mayonnaise </p>
-           <hr><img class="miniature" src={{asset("SansSauce.jpg")}} alt=""> <p> Sans Sauce </p>
-      </td>
-    </tr> 
+    {% for leBoisson in leMenu.boissons %}
+      <td><img class="miniature" src={{asset(leBoisson.image)}} alt=""> <p> {{leBoisson.nom}} </p> </td>
+    {% endfor %}
+    </tr>
+
+    <tr>
+    {% for leAccompagnement in leMenu.accompagnements %}
+      <td><img class="miniature" src={{asset(leAccompagnement.imageAccompagnement)}} alt=""> <p> {{leAccompagnement.nomAccompagnement}} </p> </td>
+    {% endfor %}
+    </tr>
+
+    <tr>
+    {% for leSauce in leMenu.sauces %}
+      <td><img class="miniature" src={{asset(leSauce.imageSauce)}} alt=""> <p> {{leSauce.nomSauce}} </p> </td>
+    {% endfor %}
+    </tr>
   </tbody>
 </table>
 

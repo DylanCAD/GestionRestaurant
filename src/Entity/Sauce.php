@@ -35,7 +35,7 @@ class Sauce
     private $imageSauce;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Menu::class, inversedBy="sauces")
+     * @ORM\OneToMany(targetEntity=Menu::class, mappedBy="sauces")
      */
     private $menus;
 
@@ -43,6 +43,8 @@ class Sauce
     {
         $this->menus = new ArrayCollection();
     }
+
+
 
     public function getId(): ?int
     {
@@ -104,6 +106,7 @@ class Sauce
     {
         if (!$this->menus->contains($menu)) {
             $this->menus[] = $menu;
+            $menu->setSauces($this);
         }
 
         return $this;
@@ -111,8 +114,14 @@ class Sauce
 
     public function removeMenu(Menu $menu): self
     {
-        $this->menus->removeElement($menu);
+        if ($this->menus->removeElement($menu)) {
+            // set the owning side to null (unless already changed)
+            if ($menu->getSauces() === $this) {
+                $menu->setSauces(null);
+            }
+        }
 
         return $this;
     }
+
 }

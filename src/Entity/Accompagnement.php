@@ -35,7 +35,7 @@ class Accompagnement
     private $imageAccompagnement;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Menu::class, inversedBy="accompagnements")
+     * @ORM\OneToMany(targetEntity=Menu::class, mappedBy="accompagnements")
      */
     private $menus;
 
@@ -95,23 +95,29 @@ class Accompagnement
     /**
      * @return Collection<int, Menu>
      */
-    public function getMenus(): Collection
+    public function getMenu(): Collection
     {
         return $this->menus;
     }
 
-    public function addMenu(Menu $menu): self
+    public function addMenu(Menu $menus): self
     {
-        if (!$this->menus->contains($menu)) {
-            $this->menus[] = $menu;
+        if (!$this->menus->contains($menus)) {
+            $this->menus[] = $menus;
+            $menus->setAccompagnements($this);
         }
 
         return $this;
     }
 
-    public function removeMenu(Menu $menu): self
+    public function removeMenu(Menu $menus): self
     {
-        $this->menus->removeElement($menu);
+        if ($this->menus->removeElement($menus)) {
+            // set the owning side to null (unless already changed)
+            if ($menus->getAccompagnements() === $this) {
+                $menus->setAccompagnements(null);
+            }
+        }
 
         return $this;
     }

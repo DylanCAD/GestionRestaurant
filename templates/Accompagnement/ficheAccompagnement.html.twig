@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fiche accompagnement{% endblock %}
+
+{% block body %}
+<h1 class="pt-2 text-center">Fiche de l'accompagnement</h1>
+<hr>
+        <div class="card mb-3">
+        <h3 class="card-header"> {{leAccompagnement.nomAccompagnement}}</h3>
+        <div class="row">
+            <div class="col-3 d-flex align-items-center mx-auto">
+                <img class="avatar mx-auto  d-block " style="height: auto; width: 200px; display: block;" src=" {{leAccompagnement.imageAccompagnement}} " alt="Card image">
+            </div>
+            <div class="col">
+                <div class="card-body">
+                <h5 class="card-title"> 
+                    <a href=" {{path('ficheAccompagnement', {'id': leAccompagnement.menu.id})}} " class="badge badge-success"> {{leAccompagnement.menu.nomAccompagnement}} </a>
+                </h5>
+        </div>
+
+        </div>
+    </div> 
+</div>
+</div>
+<table class="table table-hover mx-auto">
+  <thead>
+    <tr>
+      <th scope="col-3">Piste</th>
+      <th scope="col-4">Titre</th>
+      <th scope="col-1">Durée</th>
+      <th scope="col-3">note</th>
+    </tr>
+  </thead>
+zz
+</table>
+
+{% endblock %}

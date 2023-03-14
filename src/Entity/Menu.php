@@ -57,28 +57,27 @@ class Menu
      */
     private $type;
 
+
+
     /**
-     * @ORM\ManyToMany(targetEntity=Boisson::class, mappedBy="menus")
+     * @ORM\ManyToOne(targetEntity=Boisson::class, inversedBy="menu")
      */
     private $boissons;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Accompagnement::class, mappedBy="menus")
-     */
-    private $accompagnements;
-
-    /**
-     * @ORM\ManyToMany(targetEntity=Sauce::class, mappedBy="menus")
+     * @ORM\ManyToOne(targetEntity=Sauce::class, inversedBy="menus")
      */
     private $sauces;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Accompagnement::class, inversedBy="menu")
+     */
+    private $accompagnements;
 
 
     public function __construct()
     {
         $this->Commande = new ArrayCollection();
-        $this->boissons = new ArrayCollection();
-        $this->accompagnements = new ArrayCollection();
-        $this->sauces = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -178,83 +177,39 @@ class Menu
         return $this;
     }
 
-    /**
-     * @return Collection<int, Boisson>
-     */
-    public function getBoissons(): Collection
+
+    public function getBoissons(): ?Boisson
     {
         return $this->boissons;
     }
 
-    public function addBoisson(Boisson $boisson): self
+    public function setBoissons(?Boisson $boissons): self
     {
-        if (!$this->boissons->contains($boisson)) {
-            $this->boissons[] = $boisson;
-            $boisson->addMenu($this);
-        }
+        $this->boissons = $boissons;
 
         return $this;
     }
 
-    public function removeBoisson(Boisson $boisson): self
-    {
-        if ($this->boissons->removeElement($boisson)) {
-            $boisson->removeMenu($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Accompagnement>
-     */
-    public function getAccompagnements(): Collection
-    {
-        return $this->accompagnements;
-    }
-
-    public function addAccompagnement(Accompagnement $accompagnement): self
-    {
-        if (!$this->accompagnements->contains($accompagnement)) {
-            $this->accompagnements[] = $accompagnement;
-            $accompagnement->addMenu($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAccompagnement(Accompagnement $accompagnement): self
-    {
-        if ($this->accompagnements->removeElement($accompagnement)) {
-            $accompagnement->removeMenu($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Sauce>
-     */
-    public function getSauces(): Collection
+    public function getSauces(): ?Sauce
     {
         return $this->sauces;
     }
 
-    public function addSauce(Sauce $sauce): self
+    public function setSauces(?Sauce $sauces): self
     {
-        if (!$this->sauces->contains($sauce)) {
-            $this->sauces[] = $sauce;
-            $sauce->addMenu($this);
-        }
+        $this->sauces = $sauces;
 
         return $this;
     }
 
-    public function removeSauce(Sauce $sauce): self
+    public function getAccompagnements(): ?Accompagnement
     {
-        if ($this->sauces->removeElement($sauce)) {
-            $sauce->removeMenu($this);
-        }
+        return $this->accompagnements;
+    }
+
+    public function setAccompagnements(?Accompagnement $accompagnements): self
+    {
+        $this->accompagnements = $accompagnements;
 
         return $this;
     }

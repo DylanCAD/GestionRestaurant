@@ -25,7 +25,7 @@ class Commande
     private $dateCom;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Menu::class, mappedBy="Commande")
+     * @ORM\ManyToMany(targetEntity=Menu::class, mappedBy="Commande", cascade={"persist"})
      */
     private $menus;
 

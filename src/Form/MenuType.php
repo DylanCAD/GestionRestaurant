@@ -4,7 +4,9 @@ namespace App\Form;
 
 use App\Entity\Menu;
 use App\Entity\Type;
+use App\Entity\Sauce;
 use App\Entity\Boisson;
+use App\Entity\Accompagnement;
 use Symfony\Component\Form\AbstractType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -56,6 +58,18 @@ class MenuType extends AbstractType
                 'label'=> "Boisson du menu",
                 'class' => Boisson::class,
                 'choice_label' => 'nom'
+            ])
+
+            ->add('accompagnements', EntityType::class, [ 
+                'label'=> "Accompagnement du menu",
+                'class' => Accompagnement::class,
+                'choice_label' => 'nomAccompagnement'
+            ])
+
+            ->add('sauces', EntityType::class, [ 
+                'label'=> "Sauce du menu",
+                'class' => Sauce::class,
+                'choice_label' => 'nomSauce'
             ])
             //->add('valider', SubmitType::class)
         ;

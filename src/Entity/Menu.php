@@ -48,7 +48,11 @@ class Menu
 
 
     /**
-     * @ORM\ManyToMany(targetEntity=Commande::class, inversedBy="menus")
+     * @ORM\ManyToMany(targetEntity=Commande::class, inversedBy="menus", cascade={"persist"})
+     * @Assert\Count(
+     *      min = "1",
+     *      minMessage = "Vous devez sélectionner au moins un menu"
+     * )
      */
     private $Commande;
 

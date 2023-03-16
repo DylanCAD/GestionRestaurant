@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ajout menu{% endblock %}
-
+{% block title %}Commande{% endblock %}
+{% block stylesheets %}
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+{% endblock %}
 {% block body %}
 <h1 class="text-center pt-2 ">
 {% if (app.request.attributes.get('_route')=="admin_menu_ajout") %}
@@ -11,22 +13,11 @@
 {% endif %}
 d'un menu</h1>
 
-{{form_start(formMenu,{'attr':{'novalidate':'novalidate'}})}}
+{{form_start(formCommande,{'attr':{'novalidate':'novalidate'}})}}
 
-{{form_row(formMenu.nomMenu)}}
-{{form_row(formMenu.descriptionMenu)}}
-<div class="row">
-  <div class="col">{{form_row(formMenu.prixMenu)}}</div>
-  <div class="col">{{form_row(formMenu.type)}}</div>
-</div>
-<div class="row">
-  <div class="col">{{form_row(formMenu.boissons)}}</div>
-  <div class="col">{{form_row(formMenu.accompagnements)}}</div>
-  <div class="col">{{form_row(formMenu.sauces)}}</div>
-</div>
 
-{{form_row(formMenu.imageMenu)}}
-
+{{form_row(formCommande.client)}}
+{{form_row(formCommande.menus)}}
 
 <div class="row">
   <div class="col"><a href="{{path('admin_menus')}} " class="btn btn-warning btn-block">Annuler</a></div>
@@ -38,5 +29,13 @@ d'un menu</h1>
   {% endif %}></div>
 </div>
 
-{{form_end(formMenu)}}
+{{form_end(formCommande)}}
+{% endblock %}
+{% block javascripts %}
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script> 
+$(document).ready(function() {
+  $('.selectCommandes').select2();
+});
+</script>
 {% endblock %}

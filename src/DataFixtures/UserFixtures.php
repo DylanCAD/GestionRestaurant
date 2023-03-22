@@ -34,6 +34,7 @@ class UserFixtures extends Fixture
                     ->setEmail($faker->email())
                     ->setSexe($sexe)
                     ->setIsVerified(true)
+                    ->setRoles(['ROLE_CLIENT'])
                     ->setAvatar("https://randomuser.me/api/portraits/". $type."/". $i.".jpg")
                     ->setPassword( $this->userPassword->hashPassword(
                         $user,

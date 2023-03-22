@@ -17,7 +17,7 @@ menu(s)</h1>
 {{form_row(formCommande.menus)}}
 
 <div class="row">
-  <div class="col"><a href="{{path('commandes')}} " class="btn btn-warning btn-block">Annuler la commande</a></div>
+  <div class="col"><a href="{{path('admin_commandes')}} " class="btn btn-warning btn-block">Annuler la commande</a></div>
   <div class="col"><input type="submit", class="btn btn-success btn-block" value=
   {% if (app.request.attributes.get('_route')=="admin_menu_ajout") %}
   "Ajouter le menu"

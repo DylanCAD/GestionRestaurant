@@ -30,7 +30,7 @@ class Accompagnement
     private $prixAccompagnement;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, nullable=true)
      */
     private $imageAccompagnement;
 

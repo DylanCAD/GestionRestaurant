@@ -31,15 +31,21 @@ class Commande
 
     /**
      * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="commandes")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $client;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="commandes")
+     */
+    private $users;
 
 
     public function __construct()
     {
         $this->menus = new ArrayCollection();
-        
+        $this->dateCom = new \DateTime();
+
     }
 
     public function getId(): ?int
@@ -101,6 +107,18 @@ class Commande
     public function setClient(?Client $client): self
     {
         $this->client = $client;
+
+        return $this;
+    }
+
+    public function getUsers(): ?User
+    {
+        return $this->users;
+    }
+
+    public function setUsers(?User $users): self
+    {
+        $this->users = $users;
 
         return $this;
     }

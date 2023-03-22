@@ -33,23 +33,17 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-    {% for leBoisson in leMenu.boissons %}
-      <td><img class="miniature" src={{asset(leBoisson.image)}} alt=""> <p> {{leBoisson.nom}} </p> </td>
-    {% endfor %}
-    </tr>
+    <td>
+      <img class="miniature" src={{asset(leMenu.boissons.image)}} alt=""> <p> {{leMenu.boissons.nom}} </p>
+    </td>
 
-    <tr>
-    {% for leAccompagnement in leMenu.accompagnements %}
-      <td><img class="miniature" src={{asset(leAccompagnement.imageAccompagnement)}} alt=""> <p> {{leAccompagnement.nomAccompagnement}} </p> </td>
-    {% endfor %}
-    </tr>
+    <td>
+      <img class="miniature" src={{asset(leMenu.accompagnements.imageAccompagnement)}} alt=""> <p> {{leMenu.accompagnements.nomAccompagnement}} </p>
+    </td>
 
-    <tr>
-    {% for leSauce in leMenu.sauces %}
-      <td><img class="miniature" src={{asset(leSauce.imageSauce)}} alt=""> <p> {{leSauce.nomSauce}} </p> </td>
-    {% endfor %}
-    </tr>
+    <td>
+      <img class="miniature" src={{asset(leMenu.sauces.imageSauce)}} alt=""> <p> {{leMenu.sauces.nomSauce}} </p>
+    </td>
   </tbody>
 </table>
 

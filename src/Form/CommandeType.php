@@ -3,7 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Menu;
-use App\Entity\Client;
+use App\Entity\User;
 use App\Entity\Commande;
 use Symfony\Component\Form\AbstractType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
@@ -22,12 +22,7 @@ class CommandeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-        ->add('client', EntityType::class, [ 
-            'class' => Client::class,
-            'choice_label' => 'nomCli',
-            'label'=> "Choisissez le client",
 
-        ])
         ->add('menus', EntityType::class, [ 
                 'class' => Menu::class,
                 'choice_label' => 'nomMenu',
@@ -39,12 +34,6 @@ class CommandeType extends AbstractType
                 ]
             ])
         
-            ->add('dateCom', DateType::class,[
-                'label'=> "Date d'aujourd'hui",
-                'attr'=>[
-                    "placeholder"=>"Saisir la date d'aujourd'hui"
-                ]
-            ])
             //->add('valider', SubmitType::class)
         ;
     }

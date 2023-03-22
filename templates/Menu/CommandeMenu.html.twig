@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ajout menu{% endblock %}
+
+{% block body %}
+<h1 class="text-center pt-2 ">
+{% if (app.request.attributes.get('_route')=="admin_menu_ajout") %}
+  Ajout
+{% else %}
+  Modification
+{% endif %}
+d'un menu</h1>
+
+{{form_start(formMenu,{'attr':{'novalidate':'novalidate'}})}}
+
+{{form_row(formMenu.nomMenu)}}
+{{form_row(formMenu.descriptionMenu)}}
+<div class="row">
+  <div class="col">{{form_row(formMenu.prixMenu)}}</div>
+  <div class="col">{{form_row(formMenu.type)}}</div>
+</div>
+<div class="row">
+  <div class="col">{{form_row(formMenu.boissons)}}</div>
+  <div class="col">{{form_row(formMenu.accompagnements)}}</div>
+  <div class="col">{{form_row(formMenu.sauces)}}</div>
+</div>
+
+{{form_row(formMenu.imageMenu)}}
+
+
+<div class="row">
+  <div class="col"><a href="{{path('admin_menus')}} " class="btn btn-warning btn-block">Annuler</a></div>
+  <div class="col"><input type="submit", class="btn btn-success btn-block" value=
+  {% if (app.request.attributes.get('_route')=="admin_menu_ajout") %}
+  "Ajouter le menu"
+  {% else %}
+  "Modifier le menu"
+  {% endif %}></div>
+</div>
+
+{{form_end(formMenu)}}
+{% endblock %}

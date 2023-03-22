@@ -1,50 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}gestion commandes{% endblock %}
+{% block title %}commande{% endblock %}
 
 {% block body %}
-<h1 class="text-center pt-2 ">Gestion des commandes</h1>
-<a href=" {{path('commande_ajout')}} " class="btn btn-success">Ajouter un menu</a>
 
-<hr>        
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col-1"></th>
-      <th scope="col-2">Nom</th>
-      <th scope="col-7">Detail</th>
-      <th scope="col-7">Boisson</th>
-      <th scope="col-7">Accompagnement</th>
-      <th scope="col-7">Sauce</th>
-      <th scope="col-2">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
+<tbody>
 
         {% for laCommande in lesCommandes %}
-            {% for leMenu in laCommande.Menus %}
-          
-        
-            <tr>
-            <td scope="col-1"><img class="avatar mx-auto  d-block " style="height: auto; width: 150px; display: block;" src=" {{asset( leMenu.imageMenu) }} " alt="Card image"></td>
-            <td scope="col-2">{{leMenu.nomMenu}}</td>
-            <td scope="col-7">
-            <p class="d-flex flex-row">
-                <span class="align-self-center badge badge-success"> {{leMenu.type.genretype}}</span>
-                <span class="align-self-center mx-3"> {{leMenu.prixMenu}} €</span>
-            </p>
-            <p>
-            {{leMenu.descriptionMenu|slice(0,200)|raw}}
-            </p>
-            </td>
-            <td scope="col-2"><img class="avatar mx-auto  d-block " style="height: auto; width: 50px; display: block;" src=" {{asset( leMenu.boissons.image) }} " alt="Card image"></td>
-            <td scope="col-2"><img class="avatar mx-auto  d-block " style="height: auto; width: 50px; display: block;" src=" {{asset( leMenu.accompagnements.imageAccompagnement) }} " alt="Card image"></td>
-            <td scope="col-2"><img class="avatar mx-auto  d-block " style="height: auto; width: 50px; display: block;" src=" {{asset( leMenu.sauces.imageSauce) }} " alt="Card image"></td>
-            </tr>
-        {% endfor %}
+{#<a href=" {{path('commande_ajout')}} " class="btn btn-success">Cliquer ici pour commander !</a>#}
+
+<h5 class="text-center pt-2 ">Votre commande porte le numéro : {{laCommande.id}} et est en préparation !</h5>
+<center>
+<div style="float: center">
+        <img src={{asset("images/burgers/spongebob.gif")}} width="40%">
+</div>
+</center>
+
         {% endfor %}
 </tbody>
-</table>
+
 {% endblock %}
 {% block javascripts %}
   {% include "include/_modale.html.twig" %}

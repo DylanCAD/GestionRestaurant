@@ -3,8 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Type;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Type>
@@ -54,13 +55,13 @@ class TypeRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Type
-//    {
-//        return $this->createQueryBuilder('t')
-//            ->andWhere('t.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+/**
+ * @return QueryBuilder Returns a QueryBuilder
+ */
+public function listeTypeSimple():QueryBuilder
+{
+    return $this->createQueryBuilder('t')
+        ->orderBy('t.genretype','ASC')
+    ;
+}
 }

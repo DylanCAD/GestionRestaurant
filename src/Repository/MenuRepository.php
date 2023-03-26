@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Menu;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
+use App\Model\FiltreMenu;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Menu>
@@ -39,20 +41,26 @@ class MenuRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Menu[] Returns an array of Menu objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('m')
-//            ->andWhere('m.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('m.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+     /**
+     * @return Menu[] Returns an array of Menu objects
+     */
+
+        public function listeMenusCompletePaginee(FiltreMenu $filtre=null): ?Query
+        {
+            $query= $this->createQueryBuilder('m')
+            ->select('m')
+            ->orderBy('m.id', 'ASC');
+            if(!empty($filtre->nomMenu)){
+                $query->andWhere('m.nomMenu like :nomcherche')
+                ->setParameter('nomcherche', "%{$filtre->nomMenu}%");
+            }
+            if(!empty($filtre->type)){
+                $query->andWhere('m.type = :typecherche')
+                ->setParameter('typecherche', $filtre->type);
+            }
+        ;
+        return $query->getQuery();
+    }
 
 //    public function findOneBySomeField($value): ?Menu
 //    {

@@ -6,7 +6,6 @@ use App\Entity\Accompagnement;
 use Faker\Factory;
 use App\Entity\Menu;
 use App\Entity\Type;
-use App\Entity\Client;
 use App\Entity\Boisson;
 use App\Entity\Commande;
 use App\Entity\Sauce;
@@ -50,25 +49,6 @@ class AppFixtures extends Fixture
                     ->setType($this->getReference("type".$value[3]));
             $manager->persist($menu);
         }
-        
-        $fichierClientCsv=fopen(__DIR__."/client.csv","r");
-        while (!feof($fichierClientCsv)) {
-            $lesClients[]=fgetcsv($fichierClientCsv);
-        }
-        fclose($fichierClientCsv);
-        
-        foreach ($lesClients as $value) {
-            $client=new Client();
-            $client ->setId(intval($value[0]))
-                    ->setNomCli($value[1])
-                    ->setPrenomCli($value[2])
-                    ->setRueCli($value[3])
-                    ->setCpCli($value[4])
-                    ->setVilleCli($value[5])
-                    ->setTelCli($value[6]);
-            $manager->persist($client);
-            $this->addReference("client".$value[0],$client);
-        }
 
         $fichierCommandeCsv=fopen(__DIR__."/commande.csv","r");
         while (!feof($fichierCommandeCsv)) {
@@ -79,8 +59,7 @@ class AppFixtures extends Fixture
         foreach ($lesCommandes as $value) {
             $commande=new Commande();
             $commande   ->setId(intval($value[0]))
-                        ->setDateCom(new \DateTime($value[1]))
-                        ->setClient($this->getReference("client".$value[2]));
+                        ->setDateCom(new \DateTime($value[1]));
             $manager->persist($commande);
         }
 

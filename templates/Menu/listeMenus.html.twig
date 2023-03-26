@@ -5,7 +5,16 @@
 {% block body %}
 <h1 class="text-center pt-2 ">Nos Produits</h1>
 <h4 class="text-center pt-2 ">Parcourez nos larges gammes de choix de menu : burgers, hot-dogs, salades, quesadillas, grillades.</h4>        
+<br>
+{{ form_start(formFiltreMenu)}}
+<div class="row">
+  <div class="col-6">  {{ form_row(formFiltreMenu.nomMenu)}}</div>
+  <div class="col-2">  {{ form_row(formFiltreMenu.type)}}</div>
+</div>
+  <button type="submit" class ="btn btn-warning">Rechercher</button>
+{{ form_end(formFiltreMenu)}}<table class="table table-hover">
 <hr>
+
 <div class="row">
 {% for leMenu in lesMenus %}
 
@@ -27,4 +36,7 @@
 {% endfor %}
 
 </div>
+      <div class="navigation mx-auto">
+        {{ knp_pagination_render(lesMenus) }}
+      </div>
 {% endblock %}

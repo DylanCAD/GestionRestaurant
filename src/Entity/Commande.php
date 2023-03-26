@@ -30,12 +30,6 @@ class Commande
     private $menus;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Client::class, inversedBy="commandes")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $client;
-
-    /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="commandes")
      */
     private $users;
@@ -95,18 +89,6 @@ class Commande
         if ($this->menus->removeElement($menu)) {
             $menu->removeCommande($this);
         }
-
-        return $this;
-    }
-
-    public function getClient(): ?Client
-    {
-        return $this->client;
-    }
-
-    public function setClient(?Client $client): self
-    {
-        $this->client = $client;
 
         return $this;
     }
